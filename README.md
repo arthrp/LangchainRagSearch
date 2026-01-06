@@ -24,7 +24,7 @@ This project implements a simple RAG (Retrieval-Augmented Generation) agent usin
 
 Run the agent:
 ```bash
-npm start
+npm run build && npm run start
 ```
 
 The agent will:
