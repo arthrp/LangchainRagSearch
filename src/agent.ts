@@ -1,4 +1,4 @@
-import { tool, createAgent as langchainCreateAgent, dynamicSystemPromptMiddleware } from "langchain";
+import { tool, createAgent as langchainCreateAgent, SystemMessage } from "langchain";
 import { z } from "zod";
 import { ChatMistralAI, MistralAIEmbeddings } from "@langchain/mistralai";
 import { QdrantVectorStore } from "@langchain/qdrant";
@@ -36,14 +36,13 @@ export async function createAgent() {
     }
   );
 
-  const systemPromptMiddleware = dynamicSystemPromptMiddleware(
-    () => "You are a helpful assistant that answers questions about Aðalbrandr using the provided search tool. Always use the search tool to find information if you don't know the answer."
-  );
+  const systemPrompt = new SystemMessage("You are a helpful assistant that answers questions about Aðalbrandr using the provided search tool. Always use the search tool to find information if you don't know the answer.");
 
   const agent = langchainCreateAgent({
     model,
     tools: [searchAdalbrandr],
-    middleware: [systemPromptMiddleware],
+    middleware: [],
+    systemPrompt
   });
 
   return agent;
