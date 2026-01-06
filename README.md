@@ -1,12 +1,6 @@
 # LangChain RAG Agent with Qdrant (Mistral AI)
 
-This project implements a simple RAG (Retrieval-Augmented Generation) agent using LangChain, Mistral AI, and Qdrant.
-
-## Prerequisites
-
-- Node.js and npm
-- Docker and Docker Compose
-- Mistral AI API Key
+This project implements a simple RAG (Retrieval-Augmented Generation) agent using LangChain, Mistral AI, and Qdrant. It doesn't use the 2-step RAG, it simply connects knowledge base as a tool that agent can use.
 
 ## Setup
 
@@ -19,7 +13,6 @@ This project implements a simple RAG (Retrieval-Augmented Generation) agent usin
    Create a `.env` file in the root directory and add your Mistral AI API key:
    ```env
    MISTRAL_API_KEY=your_mistral_api_key_here
-   QDRANT_URL=http://localhost:6333
    ```
 
 3. **Install Dependencies:**
@@ -39,12 +32,4 @@ The agent will:
 2. Split the text into chunks.
 3. Store the embeddings in Qdrant.
 4. Start a chat interface where you can ask questions about the document (specifically about Aðalbrandr).
-
-## Project Structure
-
-- `src/ingest.ts`: Handles document loading and vector store population.
-- `src/agent.ts`: Defines the LangChain agent and its tools.
-- `src/index.ts`: The main entry point and chat loop.
-- `article.md`: The source document for RAG.
-- `docker-compose.yaml`: Qdrant configuration.
 
